@@ -16,3 +16,4 @@ jobs:
         repo: 'toxicphreAK/adPEAS'
         path: 'adPEAS'
         deploy_key: ${{ secrets.GITHUB_TOKEN }}
+        force: true

@@ -1,0 +1,26 @@
+name: Sync adPEASS with PEASS-ng & Create Pull Request
+
+on:
+  push
+
+jobs:
+
+  sync-adPEAS:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        repository: 'https://github.com/toxicphreAK/PEASS-ng'
+    - name: Add adPEAS as remote
+      run: git remote add adPEAS https://github.com/toxicphreAK/adPEAS
+    #- name: Check remotes
+    #  run: git remote -v
+    - name: Fetch adPEAS
+      run: git fetch adPEAS --no-tags
+    - name: Pull from main branch
+      run: git subtree pull --prefix=adPEAS adPEAS main --squash
+    - name: Create Pull Request on <other-repo>
+      uses: peter-evans/create-pull-request@v5
+      with:
+        title: Sync adPEAS changes
+        body: Automated sync of changes by GH actions. For details, see [adPEAS Repo](https://github.com/61106960/adPEAS)

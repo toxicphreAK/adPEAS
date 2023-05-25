@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        repository: 'https://github.com/toxicphreAK/PEASS-ng'
+        repository: 'toxicphreAK/PEASS-ng'
     - name: Add adPEAS as remote
       run: git remote add adPEAS https://github.com/toxicphreAK/adPEAS
     #- name: Check remotes

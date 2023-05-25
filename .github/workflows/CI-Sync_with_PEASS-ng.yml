@@ -17,6 +17,10 @@ jobs:
     #  run: git remote -v
     - name: Fetch adPEAS
       run: git fetch adPEAS --no-tags
+    - name: Set git mail
+      run: git config --global user.email "test@test.de"
+    - name: Set git name
+      run: git config --global user.name "${{ github.repository_owner }}"
     - name: Try to pull changes for sync
       run:
         git subtree pull --prefix=adPEAS adPEAS main --squash

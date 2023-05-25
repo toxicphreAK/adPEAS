@@ -17,16 +17,13 @@ jobs:
     #  run: git remote -v
     - name: Fetch adPEAS
       run: git fetch adPEAS --no-tags
-    - name: Pulls from adPEAS main (if not already present will add it as subtree)
-      uses: actions/github-script@v6
-      with:
-        result-encoding: string
-        script: |
-          try {
-            git subtree pull --prefix=adPEAS adPEAS main --squash
-          } catch(err) {
-            git subtree add --prefix=adPEAS adPEAS main --squash
-          }
+    - name: Try to pull changes for sync
+      run:
+        git subtree pull --prefix=adPEAS adPEAS main --squash
+    - if: ${{ failure() }}
+      name: If adPEAS not already present as subtree
+      run:
+        git subtree add --prefix=adPEAS adPEAS main --squash
     #- name: Pull from main branch
     #  run: git subtree add --prefix=adPEAS adPEAS main --squash
     - name: Create Pull Request on PEASS-ng

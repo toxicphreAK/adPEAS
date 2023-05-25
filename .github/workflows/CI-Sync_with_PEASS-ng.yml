@@ -11,13 +11,6 @@ jobs:
     - uses: actions/checkout@v3
       with:
         repository: 'toxicphreAK/PEASS-ng'
-    - name: Add adPEAS as remote
-      run: git remote add adPEAS https://github.com/61106960/adPEAS
-    - name: Fetch adPEAS
-      run: git fetch adPEAS --no-tags
-    - name: If adPEAS not already present as subtree
-      run:
-        git subtree add --prefix=adPEAS adPEAS main --squash
     - uses: nxtlvlsoftware/git-subtree-action@1.1
       with:
         repo: 'toxicphreAK/adPEAS'

@@ -30,8 +30,11 @@ jobs:
         git subtree add --prefix=adPEAS adPEAS main --squash
     #- name: Pull from main branch
     #  run: git subtree add --prefix=adPEAS adPEAS main --squash
-    - name: Create Pull Request on PEASS-ng
+    - if: always()
+      name: Create Pull Request on PEASS-ng
       uses: peter-evans/create-pull-request@v5
       with:
         title: Sync adPEAS changes
-        body: Automated sync of changes by GH actions. For details, see [adPEAS Repo](https://github.com/61106960/adPEAS)
+        body: |
+          Automated sync of changes by GH actions.
+          For details, see [adPEAS Repo](https://github.com/61106960/adPEAS)

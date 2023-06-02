@@ -3,6 +3,9 @@ name: Sync adPEASS with PEASS-ng & Create Pull Request
 on:
   push
 
+permissions:
+  pull-requests: write
+
 jobs:
 
   sync-adPEAS:
